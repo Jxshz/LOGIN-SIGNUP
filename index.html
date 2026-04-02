@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern App | Login & Signup</title>
+  
+  <!-- Modern Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Supabase JS CDN script (creates window.supabase) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- Main App Container -->
+  <div id="app" class="app-container">
+    
+    <!-- Authentication Card (Login/Signup Form) -->
+    <div id="auth-card" class="card">
+      <div class="card-header">
+        <h2 id="form-title">Welcome Back</h2>
+        <p id="form-subtitle">Login to your account</p>
+      </div>
+
+      <!-- Container for displaying error/success messages -->
+      <div id="message-container" class="message hidden"></div>
+
+      <!-- The Auth Form -->
+      <form id="auth-form">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="name@example.com">
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required placeholder="••••••••" minlength="6">
+        </div>
+
+        <button type="submit" id="submit-btn">
+          <span id="btn-text">Log In</span>
+          <!-- Loading Spinner -->
+          <span id="btn-loader" class="hidden"></span>
+        </button>
+      </form>
+
+      <!-- Toggle between Login and Signup -->
+      <div class="toggle-text">
+        <span id="toggle-prompt">Don't have an account?</span>
+        <button type="button" id="toggle-mode-btn">Sign up</button>
+      </div>
+    </div>
+
+    <!-- Authenticated State Card (Shown when logged in) -->
+    <div id="logged-in-card" class="card hidden">
+      <div class="card-header">
+        <h2>Dashboard</h2>
+        <p>You have successfully logged in!</p>
+      </div>
+      
+      <p id="user-email-display" class="user-email"></p>
+      <button id="logout-btn" class="secondary-btn">Log Out</button>
+    </div>
+    
+  </div>
+
+  <!-- Application Logic -->
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

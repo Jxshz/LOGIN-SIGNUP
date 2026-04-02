@@ -1,0 +1,273 @@
+
+:root {
+
+  --crushed-berry: #880d1e;
+  --raspberry: #dd2d4a;
+  --bubblegum-pink: #f26a8d;
+  --pink-mist: #f49cbb;
+  --light-cyan: #cbeef3;
+  
+
+  --white: #ffffff;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --input-bg: #f8fafc;
+  --input-border: #e2e8f0;
+  
+  
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 15px 35px rgba(136, 13, 30, 0.15); /* Soft shadow with brand tint */
+  --border-radius: 16px; /* Soft rounded corners */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  background: linear-gradient(135deg, var(--crushed-berry), var(--raspberry), var(--bubblegum-pink), var(--pink-mist), var(--light-cyan));
+  background-size: 300% 300%;
+  animation: gradientBG 15s ease infinite;
+  
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background animation keyframes */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   Layout & Cards
+   ========================================= */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  perspective: 1000px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px); /* Glassmorphism effect */
+  border-radius: var(--border-radius);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card.hidden {
+  display: none;
+}
+
+/* =========================================
+   Typography & Headers
+   ========================================= */
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  color: var(--crushed-berry);
+  font-weight: 600;
+  font-size: 26px;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.card-header p {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+/* =========================================
+   Form Inputs
+   ========================================= */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 12px;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: var(--input-bg);
+  transition: var(--transition);
+}
+
+/* Focus and Hover Effects for Inputs */
+.input-group input:focus {
+  outline: none;
+  border-color: var(--bubblegum-pink);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(242, 106, 141, 0.15); /* Soft pink halo */
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  
+  /* Brand Gradient Button */
+  background: linear-gradient(135deg, var(--raspberry), var(--bubblegum-pink));
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(221, 45, 74, 0.25);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(221, 45, 74, 0.35);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary Button (Logout) */
+.secondary-btn {
+  background: transparent;
+  color: var(--crushed-berry);
+  border: 1.5px solid var(--crushed-berry);
+  box-shadow: none;
+}
+
+.secondary-btn:hover {
+  background: rgba(136, 13, 30, 0.05);
+  box-shadow: none;
+}
+
+/* =========================================
+   Toggle Text Mode (Login <-> Signup)
+   ========================================= */
+.toggle-text {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+#toggle-mode-btn {
+  background: none;
+  border: none;
+  color: var(--raspberry);
+  font-weight: 600;
+  padding: 0;
+  width: auto;
+  display: inline;
+  margin-left: 6px;
+  margin-top: 0;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+#toggle-mode-btn:hover {
+  text-decoration: underline;
+  transform: none;
+}
+
+/* =========================================
+   Messages & Feedback
+   ========================================= */
+.message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.message.hidden {
+  display: none;
+}
+
+.message.error {
+  background-color: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+}
+
+.message.success {
+  background-color: #f0fdf4;
+  color: #22c55e;
+  border: 1px solid #86efac;
+}
+
+.user-email {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* =========================================
+   Animations
+   ========================================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading Spinner for Buttons */
+#btn-loader {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: var(--white);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
